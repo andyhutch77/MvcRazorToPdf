@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>itextsharp.xmlworker</id>
+    <version>5.4.3</version>
+    <title>iTextSharp XML Worker</title>
+    <authors>Bruno Lowagie, Paulo Soares</authors>
+    <owners>Bruno Lowagie, Paulo Soares</owners>
+    <licenseUrl>http://www.gnu.org/licenses/agpl.html</licenseUrl>
+    <projectUrl>http://sourceforge.net/projects/itextsharp/</projectUrl>
+    <iconUrl>http://c.fsdn.com/allura/p/xmlworker/icon</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Parses XML to PDF, with CSS support, using iTextSharp.</description>
+    <summary>Parses XML to PDF, with CSS support, using iTextSharp.</summary>
+    <releaseNotes>http://itextpdf.com/history/?branch=54&amp;node=543</releaseNotes>
+    <copyright>Copyright (c) 2013 by Bruno Lowagie and Paulo Soares. All Rights Reserved.</copyright>
+    <language>en-US</language>
+    <tags>itext itextsharp c# csharp xml worker</tags>
+    <dependencies>
+      <dependency id="iTextSharp" version="5.4.3" />
+    </dependencies>
+  </metadata>
+</package>
