@@ -19,6 +19,7 @@ Run the following nuget command from your mvc project to install the [package] (
 Create a layout template that will work as detailed in the [iTextXmlWorker docs] (http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
 This is also useful [http://demo.itextsupport.com/xmlworker/] (http://demo.itextsupport.com/xmlworker/) if you have problems getting certain styles to render.
 Here is a one that I used in the demo [https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/] (_PdfLayout.cshtml(https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/_PdfLayout.cshtml).
+
 It's pretty basic as the iTextXmlWorker needs to process it but the html is only ever rendered within a pdf document.
 
 TO FINISH
