@@ -36,7 +36,7 @@ namespace MvcRazorToPdf
             context.Controller.ViewData.Model = Model;
             
             if (context.HttpContext.Request.QueryString["html"] != null &&
-                context.HttpContext.Request.QueryString["html"].Equals("true"))
+                context.HttpContext.Request.QueryString["html"].ToLower().Equals("true"))
             {
                 viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
                 viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,

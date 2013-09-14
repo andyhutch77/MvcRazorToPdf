@@ -1,0 +1,7 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Demos</h2>
+@Html.ActionLink("Pdf with heading, paragraph, image, hyperlink and table", "Index", "Pdf")<br />
+@Html.ActionLink("Same as above but passes html=true in query string to render the html instead (for debugging purposes)", "Index", "Pdf", new { html = true }, null)
