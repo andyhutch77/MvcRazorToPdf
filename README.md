@@ -13,3 +13,10 @@ Run the following nuget command from your mvc project to install the [package] (
 
 `Install-Package MvcRazorToPdf`
 
+##How to use it
+[See the MvcRazorToPdfExample project] (https://github.com/andyhutch77/MvcRazorToPdf/tree/master/MvcRazorToPdfExample)
+
+Create a layout template that will work as detailed in the [iTextXmlWorker docs] (http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
+This is also useful [http://demo.itextsupport.com/xmlworker/] (http://demo.itextsupport.com/xmlworker/) if you have problems getting certain styles to render.
+
+
