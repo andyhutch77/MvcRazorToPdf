@@ -14,13 +14,16 @@ Run the following nuget command from your mvc project to install the [package] (
 `Install-Package MvcRazorToPdf`
 
 ##How to use it
-[See the MvcRazorToPdfExample project] (https://github.com/andyhutch77/MvcRazorToPdf/tree/master/MvcRazorToPdfExample)
+1. Create a shared layout that is compatible with an iTextXmlWorker document [Simple example layout] (https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/_PdfLayout.cshtml)
+2. Create a controller action that return a PdfActionResult (model optional) [Simple example contoller] (https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Controllers/PdfController.cs)
+3. Create the view page to render as normal [Simple example view] (https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Pdf/Index.cshtml)
 
-Create a layout template that will work as detailed in the [iTextXmlWorker docs] (http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
-This is also useful [http://demo.itextsupport.com/xmlworker/] (http://demo.itextsupport.com/xmlworker/) if you have problems getting certain styles to render.
-Here is a one that I used in the demo [https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/] (_PdfLayout.cshtml(https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/_PdfLayout.cshtml).
+[Complete example project] (https://github.com/andyhutch77/MvcRazorToPdf/tree/master/MvcRazorToPdfExample)
 
-It's pretty basic as the iTextXmlWorker needs to process it but the html is only ever rendered within a pdf document.
+##Useful info
+
+[iTextXmlWorker docs] (http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
+[http://demo.itextsupport.com/xmlworker/] (http://demo.itextsupport.com/xmlworker/) if you have problems getting certain styles to render.
 
 TO FINISH
 
