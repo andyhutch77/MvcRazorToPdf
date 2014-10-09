@@ -60,9 +60,9 @@ namespace MvcRazorToPdf
                 viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,
                     context.Controller.TempData, tr);
                 viewEngineResult.Render(viewContext, tr);
-                Stream stream = new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString()));
+                var reader = new StringReader(sb.ToString());
 
-                XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, stream, null);
+                XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, reader);
 
                 document.Close();
 
