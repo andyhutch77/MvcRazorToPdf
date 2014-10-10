@@ -1,0 +1,27 @@
+﻿@model MvcRazorToPdfExample.Models.PdfExample
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+    var imagePath = Server.MapPath("~/Content/Images");
+}
+<h1>@Model.Heading</h1>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a urna metus. In id magna eget sapien vehicula sollicitudin fermentum nec ante. Ut iaculis vehicula leo nec posuere. Duis ornare hendrerit sem, nec volutpat nisi placerat a. Nullam convallis vitae augue vitae fringilla. Nunc viverra commodo laoreet. Vivamus fermentum ligula eros, eget sagittis justo euismod eget. Donec dolor neque, scelerisque vel vulputate quis, tincidunt et odio. Duis eget est risus. Phasellus ut nulla accumsan, malesuada sapien non, ornare nibh.
+</p>
+<img src="@imagePath\avatar.jpg" alt="mug shot" /><br />
+<a href="http://www.highviewsoftwaresolutions.co.uk">http://www.highviewsoftwaresolutions.co.uk</a>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+            <td>@item.Id</td>
+            <td>@item.Description</td>
+            <td>@item.Price.ToString("c")</td>
+            </tr>
+        }
+</table>

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Web.Mvc;
 using iTextSharp.text;
@@ -20,8 +21,24 @@ namespace MvcRazorToPdf
             Model = model;
         }
 
+        public PdfActionResult(object model, Action<PdfWriter, Document> configureSettings)
+        {
+            if (configureSettings == null) throw new ArgumentNullException("configureSettings");
+            Model = model;
+            ConfigureSettings = configureSettings;
+        }
+
+        public PdfActionResult(string viewName, object model, Action<PdfWriter, Document> configureSettings)
+        {
+            if (configureSettings == null) throw new ArgumentNullException("configureSettings");
+            ViewName = viewName;
+            Model = model;
+            ConfigureSettings = configureSettings;
+        }
+
         public string ViewName { get; set; }
         public object Model { get; set; }
+        public Action<PdfWriter, Document> ConfigureSettings { get; set; }
 
         public override void ExecuteResult(ControllerContext context)
         {
@@ -52,7 +69,13 @@ namespace MvcRazorToPdf
                         PdfWriter writer = PdfWriter.GetInstance(document, workStream);
                         writer.CloseStream = false;
 
+                        if (ConfigureSettings != null)
+                        {
+
+                            ConfigureSettings(writer, document);
+                        }
                         document.Open();
+
 
                         viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
                         var sb = new StringBuilder();
