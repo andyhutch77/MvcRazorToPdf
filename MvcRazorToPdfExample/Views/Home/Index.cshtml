@@ -6,4 +6,8 @@
 @Html.ActionLink("Pdf with heading, paragraph, image, hyperlink and table", "Index", "Pdf")<br />
 @Html.ActionLink("Same as above but passes html=true in query string to render the html instead (for debugging purposes)", "Index", "Pdf", new { html = true }, null)<br/>
 
-@Html.ActionLink("Same as above but with change to page size using document and writer objects during PDF generation", "IndexWithAccessToDocumentAndWriter","Pdf")
+@Html.ActionLink("Same as above but with change to page size using document and writer objects during PDF generation", "IndexWithAccessToDocumentAndWriter","Pdf")<br/>
+
+@Html.ActionLink("Same as above but prompts to download as a file", "IndexWithAccessToDocumentAndWriterDownloadFile", "Pdf")<br/>
+
+@Html.ActionLink("Generate a PDF and save it on the server side, while showing a regular page", "SaveToAppData","Pdf")

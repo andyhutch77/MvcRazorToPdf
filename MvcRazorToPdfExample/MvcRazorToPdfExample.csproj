@@ -163,6 +163,12 @@
   <ItemGroup>
     <Content Include="Views\Pdf\IndexWithAccessToDocumentAndWriter.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Pdf\IndexWithAccessToDocumentAndWriterDownloadFile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Pdf\SaveToAppData.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

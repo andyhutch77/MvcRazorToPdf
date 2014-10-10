@@ -1,10 +1,7 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 using System.Web.Mvc;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using iTextSharp.tool.xml;
 
 namespace MvcRazorToPdf
 {
@@ -40,6 +37,8 @@ namespace MvcRazorToPdf
         public object Model { get; set; }
         public Action<PdfWriter, Document> ConfigureSettings { get; set; }
 
+        public string FileDownloadName { get; set; }
+
         public override void ExecuteResult(ControllerContext context)
         {
             IView viewEngineResult;
@@ -52,50 +51,31 @@ namespace MvcRazorToPdf
 
             context.Controller.ViewData.Model = Model;
 
+
             if (context.HttpContext.Request.QueryString["html"] != null &&
                 context.HttpContext.Request.QueryString["html"].ToLower().Equals("true"))
             {
-                viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
-                viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,
-                    context.Controller.TempData, context.HttpContext.Response.Output);
-                viewEngineResult.Render(viewContext, context.HttpContext.Response.Output);
+                RenderHtmlOutput(context);
             }
             else
             {
-                using (var document = new Document())
+                if (!String.IsNullOrEmpty(FileDownloadName))
                 {
-                    using (var workStream = new MemoryStream())
-                    {
-                        PdfWriter writer = PdfWriter.GetInstance(document, workStream);
-                        writer.CloseStream = false;
-
-                        if (ConfigureSettings != null)
-                        {
-
-                            ConfigureSettings(writer, document);
-                        }
-                        document.Open();
-
-
-                        viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
-                        var sb = new StringBuilder();
-
-                        using (TextWriter tr = new StringWriter(sb))
-                        {
-                            viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,
-                                context.Controller.TempData, tr);
-                            viewEngineResult.Render(viewContext, tr);
-                            using (var reader = new StringReader(sb.ToString()))
-                            {
-                                XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, reader);
-
-                                document.Close();
-                                new FileContentResult(workStream.ToArray(), "application/pdf").ExecuteResult(context);
-                            }
-                        }
-                    }
+                    context.HttpContext.Response.AddHeader("content-disposition",
+                        "attachment; filename=" + FileDownloadName);
                 }
+
+                new FileContentResult(context.GeneratePdf(Model, ViewName, ConfigureSettings), "application/pdf")
+                    .ExecuteResult(context);
             }
+        }
+
+        private void RenderHtmlOutput(ControllerContext context)
+        {
+            IView viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
+            var viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,
+                context.Controller.TempData, context.HttpContext.Response.Output);
+            viewEngineResult.Render(viewContext, context.HttpContext.Response.Output);
         }
     }
 }
