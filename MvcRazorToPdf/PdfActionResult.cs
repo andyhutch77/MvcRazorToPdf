@@ -9,9 +9,6 @@ namespace MvcRazorToPdf
 {
     public class PdfActionResult : ActionResult
     {
-        public string ViewName { get; set; }
-        public object Model { get; set; }
-
         public PdfActionResult(string viewName, object model)
         {
             ViewName = viewName;
@@ -22,6 +19,9 @@ namespace MvcRazorToPdf
         {
             Model = model;
         }
+
+        public string ViewName { get; set; }
+        public object Model { get; set; }
 
         public override void ExecuteResult(ControllerContext context)
         {
@@ -34,7 +34,7 @@ namespace MvcRazorToPdf
             }
 
             context.Controller.ViewData.Model = Model;
-            
+
             if (context.HttpContext.Request.QueryString["html"] != null &&
                 context.HttpContext.Request.QueryString["html"].ToLower().Equals("true"))
             {
@@ -45,28 +45,33 @@ namespace MvcRazorToPdf
             }
             else
             {
-                var workStream = new MemoryStream();
-                var document = new Document();
+                using (var document = new Document())
+                {
+                    using (var workStream = new MemoryStream())
+                    {
+                        PdfWriter writer = PdfWriter.GetInstance(document, workStream);
+                        writer.CloseStream = false;
 
-                PdfWriter writer = PdfWriter.GetInstance(document, workStream);
-                writer.CloseStream = false;
+                        document.Open();
 
-                document.Open();
+                        viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
+                        var sb = new StringBuilder();
 
-                viewEngineResult = ViewEngines.Engines.FindView(context, ViewName, null).View;
-                var sb = new StringBuilder();
-                TextWriter tr = new StringWriter(sb);
+                        using (TextWriter tr = new StringWriter(sb))
+                        {
+                            viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,
+                                context.Controller.TempData, tr);
+                            viewEngineResult.Render(viewContext, tr);
+                            using (var reader = new StringReader(sb.ToString()))
+                            {
+                                XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, reader);
 
-                viewContext = new ViewContext(context, viewEngineResult, context.Controller.ViewData,
-                    context.Controller.TempData, tr);
-                viewEngineResult.Render(viewContext, tr);
-                var reader = new StringReader(sb.ToString());
-
-                XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, reader);
-
-                document.Close();
-
-                new FileContentResult(workStream.ToArray(), "application/pdf").ExecuteResult(context);
+                                document.Close();
+                                new FileContentResult(workStream.ToArray(), "application/pdf").ExecuteResult(context);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
