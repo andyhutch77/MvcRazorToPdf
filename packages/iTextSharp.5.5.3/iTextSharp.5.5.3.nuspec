@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>iTextSharp</id>
+    <version>5.5.3</version>
+    <authors>Bruno Lowagie, Paulo Soares</authors>
+    <owners>Bruno Lowagie, Paulo Soares</owners>
+    <licenseUrl>http://www.gnu.org/licenses/agpl.html</licenseUrl>
+    <projectUrl>http://sourceforge.net/projects/itextsharp/</projectUrl>
+    <iconUrl>http://itextpdf.com/img/logo.gif</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>iTextSharp is a port of the iText open source java library for PDF generation written entirely in C# for the .NET platform.</description>
+    <summary>iTextSharp is a port of the iText open source java library for PDF generation written entirely in C# for the .NET platform.</summary>
+    <releaseNotes>http://itextpdf.com/changelog/553</releaseNotes>
+    <copyright>Copyright (c) 1999-2014 by Bruno Lowagie and Paulo Soares. All Rights Reserved.</copyright>
+    <language>en-US</language>
+    <tags>itext itextsharp c# .net csharp</tags>
+  </metadata>
+</package>
