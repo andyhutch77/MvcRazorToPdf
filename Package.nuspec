@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MvcRazorToPdf</id>
+    <version>1.0.1</version>
+    <authors>Andrew Hutchinson</authors>
+    <owners>Andrew Hutchinson</owners>
+    <projectUrl>https://github.com/andyhutch77/MvcRazorToPdf</projectUrl>
+    <iconUrl>http://s.gravatar.com/avatar/7aa6674268c4e5feee166c7dba8951d2?s=80</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Creates pdf documents from rendered razor/html.</summary>
+    <description>
+	    Create pdf documents within an asp .net mvc project by generating your views as normal but returning a PdfActionResult.
+	    This converts regular produced razor/html to pdf documents in the browser using the iTextXmlWorker.
+	    Please see the following URL for instructions and a demo link:
+	    https://github.com/andyhutch77/MvcRazorToPdf.
+	    This uses the newer version/licence of iText/iTextXmlWorker and can process the html that is produced from your views.
+    </description>
+    <releaseNotes>
+	    Upgraded to include itextxml upgrade to 5.5 as per:
+	    https://github.com/andyhutch77/MvcRazorToPdf/issues/5
+    </releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>Pdf Mvc Razor</tags>
+    <dependencies>
+      <dependency id="iTextSharp" version="5.5.5" />
+      <dependency id="itextsharp.xmlworker" version="5.5.5" />
+    </dependencies>
+  </metadata>
+</package>
