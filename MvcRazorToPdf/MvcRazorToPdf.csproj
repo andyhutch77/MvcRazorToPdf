@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MvcRazorToPdf.cs" />
+    <Compile Include="MvcRazorToPdfExtensions.cs" />
     <Compile Include="PdfActionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
