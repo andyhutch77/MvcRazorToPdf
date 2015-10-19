@@ -28,7 +28,8 @@ namespace MvcRazorToPdf
 
         public PdfActionResult(string viewName, object model, Action<PdfWriter, Document> configureSettings)
         {
-            if (configureSettings == null) throw new ArgumentNullException("configureSettings");
+            if (configureSettings == null) 
+            throw new ArgumentNullException("configureSettings");
             ViewName = viewName;
             Model = model;
             ConfigureSettings = configureSettings;
