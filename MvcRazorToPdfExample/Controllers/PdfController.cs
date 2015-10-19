@@ -29,6 +29,7 @@ namespace MvcRazorToPdfExample.Controllers
                     }
                 }
             };
+
             return new PdfActionResult(model);
         }
 
@@ -53,6 +54,7 @@ namespace MvcRazorToPdfExample.Controllers
                     }
                 }
             };
+
             byte[] pdfOutput = ControllerContext.GeneratePdf(model, "IndexWithAccessToDocumentAndWriter");
             string fullPath = Server.MapPath("~/App_Data/FreshlyMade.pdf");
 
@@ -86,6 +88,7 @@ namespace MvcRazorToPdfExample.Controllers
                     }
                 }
             };
+            
             return new PdfActionResult(model, (writer, document) =>
             {
                 document.SetPageSize(new Rectangle(500f, 500f, 90));
@@ -114,6 +117,7 @@ namespace MvcRazorToPdfExample.Controllers
                     }
                 }
             };
+
             return new PdfActionResult(model, (writer, document) =>
             {
                 document.SetPageSize(new Rectangle(500f, 500f, 90));
