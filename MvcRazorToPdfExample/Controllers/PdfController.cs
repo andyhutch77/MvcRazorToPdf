@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SysIO = System.IO;
 using System.Web.Mvc;
 using iTextSharp.text;
 using MvcRazorToPdf;
@@ -56,11 +57,11 @@ namespace MvcRazorToPdfExample.Controllers
             byte[] pdfOutput = ControllerContext.GeneratePdf(model, "IndexWithAccessToDocumentAndWriter");
             string fullPath = Server.MapPath("~/App_Data/FreshlyMade.pdf");
 
-            if (System.IO.File.Exists(fullPath))
+            if (SysIO.File.Exists(fullPath))
             {
-                System.IO.File.Delete(fullPath);
+                SysIO.File.Delete(fullPath);
             }
-            System.IO.File.WriteAllBytes(fullPath, pdfOutput);
+            SysIO.File.WriteAllBytes(fullPath, pdfOutput);
 
             return View("SaveToAppData");
         }
