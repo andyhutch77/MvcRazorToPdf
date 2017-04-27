@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomImageTagProcessor.cs" />
     <Compile Include="MvcRazorToPdf.cs" />
     <Compile Include="MvcRazorToPdfExtensions.cs" />
     <Compile Include="PdfActionResult.cs" />
