@@ -5,6 +5,12 @@ using System.Web.Mvc;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using iTextSharp.tool.xml.css;
+using iTextSharp.tool.xml.html;
+using iTextSharp.tool.xml.parser;
+using iTextSharp.tool.xml.pipeline.css;
+using iTextSharp.tool.xml.pipeline.end;
+using iTextSharp.tool.xml.pipeline.html;
 
 namespace MvcRazorToPdf
 {
@@ -32,13 +38,29 @@ namespace MvcRazorToPdf
                     {
                         configureSettings(writer, document);
                     }
+
                     document.Open();
 
+                    //base64 image support : https://rupertmaier.wordpress.com/2014/08/22/creating-a-pdf-with-an-image-in-itextsharp/
+                    var tagProcessors = (DefaultTagProcessorFactory)Tags.GetHtmlTagProcessorFactory();
+                    tagProcessors.RemoveProcessor(HTML.Tag.IMG);
+                    tagProcessors.AddProcessor(HTML.Tag.IMG, new CustomImageTagProcessor());
+
+                    var cssFiles = new CssFilesImpl();
+                    cssFiles.Add(XMLWorkerHelper.GetInstance().GetDefaultCSS());
+                    var cssResolver = new StyleAttrCSSResolver(cssFiles);
+
+                    var charset = Encoding.UTF8;
+                    var hpc = new HtmlPipelineContext(new CssAppliersImpl(new XMLWorkerFontProvider()));
+                    hpc.SetAcceptUnknown(true).AutoBookmark(true).SetTagFactory(tagProcessors);
+                    var htmlPipeline = new HtmlPipeline(hpc, new PdfWriterPipeline(document, writer));
+                    var cssPipeline = new CssResolverPipeline(cssResolver, htmlPipeline);
+                    var worker = new XMLWorker(cssPipeline, true);
+                    var xmlParser = new XMLParser(true, worker, charset);
 
                     using (var reader = new StringReader(RenderRazorView(context, viewName)))
                     {
-                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, reader);
-
+                        xmlParser.Parse(reader);
                         document.Close();
                         output = workStream.ToArray();
                     }
