@@ -9,18 +9,18 @@ This uses the newer version/licence of iText/iTextXmlWorker and can process the 
 
 ##Installation instructions:
 
-Run the following nuget command from your mvc project to install the [package] (http://nuget.org/packages/MvcRazorToPdf/):
+Run the following nuget command from your mvc project to install the [package](http://nuget.org/packages/MvcRazorToPdf/):
 
 `Install-Package MvcRazorToPdf`
 
 ##How to use it
-1. Create a shared layout that is compatible with an iTextXmlWorker document [Simple example layout] (https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/_PdfLayout.cshtml)
-2. Create a controller action that return a PdfActionResult (model optional) [Simple example contoller] (https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Controllers/PdfController.cs)
-3. Create the view page to render as normal [Simple example view] (https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Pdf/Index.cshtml)
+1. Create a shared layout that is compatible with an iTextXmlWorker document [Simple example layout](https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Shared/_PdfLayout.cshtml)
+2. Create a controller action that return a PdfActionResult (model optional) [Simple example contoller](https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Controllers/PdfController.cs)
+3. Create the view page to render as normal [Simple example view](https://github.com/andyhutch77/MvcRazorToPdf/blob/master/MvcRazorToPdfExample/Views/Pdf/Index.cshtml)
 
-[Complete example project] (https://github.com/andyhutch77/MvcRazorToPdf/tree/master/MvcRazorToPdfExample)
+[Complete example project](https://github.com/andyhutch77/MvcRazorToPdf/tree/master/MvcRazorToPdfExample)
 
 ##Useful info
 
-[iTextXmlWorker docs] (http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
-[http://demo.itextsupport.com/xmlworker/] (http://demo.itextsupport.com/xmlworker/) if you have problems getting certain styles to render.
+[iTextXmlWorker docs](http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
+http://demo.itextsupport.com/xmlworker/ if you have problems getting certain styles to render.
