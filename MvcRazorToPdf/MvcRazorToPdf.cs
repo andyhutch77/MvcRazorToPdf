@@ -8,6 +8,9 @@ using iTextSharp.tool.xml;
 
 namespace MvcRazorToPdf
 {
+    /// <summary>
+    /// MvcRazorToPdf
+    /// </summary>
     public class MvcRazorToPdf
     {
         public byte[] GeneratePdfOutput(ControllerContext context, object model = null, string viewName = null,
@@ -47,6 +50,9 @@ namespace MvcRazorToPdf
             return output;
         }
 
+        /// <summary>
+        /// RenderRazorView(ControllerContext context, string viewName)
+        /// </summary>
         public string RenderRazorView(ControllerContext context, string viewName)
         {
             IView viewEngineResult = ViewEngines.Engines.FindView(context, viewName, null).View;
