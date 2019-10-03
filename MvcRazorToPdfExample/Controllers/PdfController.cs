@@ -6,6 +6,9 @@ using MvcRazorToPdfExample.Models;
 
 namespace MvcRazorToPdfExample.Controllers
 {
+    /// <summary>
+    /// PdfController
+    /// </summary>
     public class PdfController : Controller
     {
         public ActionResult Index()
@@ -33,6 +36,9 @@ namespace MvcRazorToPdfExample.Controllers
             return new PdfActionResult(model);
         }
 
+        /// <summary>
+        /// SaveToAppData
+        /// </summary>
         public ActionResult SaveToAppData()
         {
             var model = new PdfExample
@@ -67,6 +73,9 @@ namespace MvcRazorToPdfExample.Controllers
             return View("SaveToAppData");
         }
 
+        /// <summary>
+        /// IndexWithAccessToDocumentAndWriter
+        /// </summary>
         public ActionResult IndexWithAccessToDocumentAndWriter()
         {
             var model = new PdfExample
@@ -96,6 +105,9 @@ namespace MvcRazorToPdfExample.Controllers
             });
         }
 
+        /// <summary>
+        /// IndexWithAccessToDocumentAndWriterDownloadFile
+        /// </summary>
         public ActionResult IndexWithAccessToDocumentAndWriterDownloadFile()
         {
             var model = new PdfExample
