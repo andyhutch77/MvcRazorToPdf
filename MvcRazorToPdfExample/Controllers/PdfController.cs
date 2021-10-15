@@ -137,7 +137,7 @@ namespace MvcRazorToPdfExample.Controllers
                 document.NewPage();
             })
             {
-                FileDownloadName = "ElanWasHere.pdf"
+                FileDownloadName = "pdfdocument.pdf"
             };
         }
     }
