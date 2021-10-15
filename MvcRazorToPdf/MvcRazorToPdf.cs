@@ -13,6 +13,14 @@ namespace MvcRazorToPdf
     /// </summary>
     public class MvcRazorToPdf
     {
+        /// <summary>
+        /// GeneratePdfOutput
+        /// </summary>
+        /// <param name="context">Controller contetxt</param>
+        /// <param name="model">Model</param>
+        /// <param name="viewName">ViewName</param>
+        /// <param name="configureSettings">configuration settings</param>
+        /// <returns></returns>
         public byte[] GeneratePdfOutput(ControllerContext context, object model = null, string viewName = null,
             Action<PdfWriter, Document> configureSettings = null)
         {
