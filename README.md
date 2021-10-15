@@ -24,3 +24,8 @@ Run the following nuget command from your mvc project to install the [package] (
 
 [iTextXmlWorker docs] (http://demo.itextsupport.com/xmlworker/itextdoc/flatsite.html).
 [http://demo.itextsupport.com/xmlworker/] (http://demo.itextsupport.com/xmlworker/) if you have problems getting certain styles to render.
+
+
+## Notes
+
+Please note this project needs updating to a more modern version of .net MVC in the future.
