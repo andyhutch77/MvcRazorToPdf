@@ -162,3 +162,4 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+/.vs/MvcRazorToPdfExample/config/applicationhost.config
