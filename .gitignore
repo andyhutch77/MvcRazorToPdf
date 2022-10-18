@@ -164,4 +164,3 @@ $RECYCLE.BIN/
 .DS_Store
 /.vs/MvcRazorToPdfExample/config/applicationhost.config
 /.vs/MvcRazorToPdfExample/FileContentIndex
-/packages/Newtonsoft.Json.13.0.1
